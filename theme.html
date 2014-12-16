@@ -10,91 +10,61 @@
       {% endif %}
       | {{ site.name }}
     </title>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
 
     {{ header_meta }}
 
+    <link href="{{ assets('css/reset.css') }}" rel="stylesheet">
+    <link href="{{ assets('css/normalize.css') }}" rel="stylesheet">
     <link href="{{ assets('css/style.css') }}" rel="stylesheet">
 
+    <!-- <link href="http://hugocorbucci.com/stylesheets/A.reset.css+normalize.css+all.css,Mcc.bhR_MlEsjw.css.pagespeed.cf.KOwyvVswuv.css" rel="stylesheet" type="text/css"/><link href="/stylesheets/index.css" rel="stylesheet" type="text/css"/> -->
+    
     <!--[if IE 7]>
       <link href="http://postach.io/static/themes/_assets/fontawesome/css/font-awesome-ie7.min.css" rel="stylesheet">
     <![endif]-->
 
-    <!--
-    <style>
-      /**
-       * Your custom override CSS goes here. If you wanted to override the default link colour and hover state, you would do this:
-       *
-       *  a {
-       *      color: #333; /* Override the default colour with a not-quite-black that is easy on the eyes on white screens */
-       *  }
-       *
-       *  a:hover {
-       *      color: #545454; /* This will now change the hover state as well */
-       *  }
-       *
-       *  You can put anything you want to override in here, so be creative!
-       */
-    </style>
-    -->
-
-    {% if site.analytics %}
-      <script>
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', '{{ site.analytics }}']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-      </script>
-    {% endif %}
-
+    <!--[if IE]> --><link href='http://hugocorbucci.com/images/favicon.ico' rel='shortcut icon'><!-- <![endif]-->
+    <link href='http://hugocorbucci.com/images/xfavicon.png.pagespeed.ic.zdJ_ffeD5A.png' rel='icon'>
+    <link href='http://hugocorbucci.com/images/xapple-touch-icon-precomposed.png.pagespeed.ic.zdJ_ffeD5A.png' rel='apple-touch-icon-precomposed'>
   </head>
-  <body>
-
+  <body class='blog'>
     {% if is_login %}
 
       {{ login_form }}
 
     {% else %}
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <div class="row">
-            <div class="span10 offset1">
-              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="brand" href="/">{{ site.name }}</a>
-
-              {% if not is_login %}
-              <div class="nav-collapse collapse">
-                <ul class="nav pull-right">
-                  <li><a href="/">Blog</a></li>
-                  {% if pages %}
-                  {% for page in pages %}
-                  <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.title }}</a></li>
-                  {% endfor %}
-                  {% endif %}
-                </ul>
-              </div>
-              {% endif %}
-
-            </div>
-          </div>
-        </div>
+    <div class='top'>
+      <div class='header'>
+        <ul class='social'>
+          <li><a href="{{ site.twitter }}"><img alt="Twitter" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAAgFQTFRFAAAAAAAAAAD/AP//AICAAID/AP//AKqqAKr/AIC/AL+/AL//AJnMAJn/AKrVAKr/ALb/AL//AKrjAKLoAKrqALbtAKruAK/vAKrxAK7kAK7yAKrnAK7oALHpAKrqAKfrAK3tAKfnAK/vAKroAK/wAKrqAKzqAKrrAKzsAKrtAKzuBarsBK7tBKvtBK7uBKrtBK7wBKztA6rrA6vvA6rsA6vsA63tA6vuA6zuA6zsA63sA6vtAqvrAqzuAqvuAqzuAqzsAq3vAqzsAqztAqztAq3tAqvsAqvsAqzsAqztAqvrAq3sAq3uAqztBKztBKvtA63uA6zuA6ztA6ztA6ztA6ztA6ztA63uA6zsA6zsA6ztA6ztA6ztA6vtA6ztA6zuA63tA6ztA6vsAqzuAqzuAqztAqztAq3tAqztAqzuAqzuAqztAq3uAqztAqztAqzsAqztA6ztA6vtA6ztA6vtA6ztA6ztA6vtA6ztA6ztA6ztA6ztA6vsA6ztA6zsA6zuA6ztA6zuA6vtA6ztA6zuA6ztA6zuA6ztA6vtA6ztA6ztA63tA63uA6ztA6zuA63uA63vA67vA67wA6/xA7DyA7DzA7HzA7H0A7H1A7L1A7L2A7P2A7P3A7T3A7T4A7X5A7X6A7b6A7b7A7f8A7f9A7j9A7j+A7n/A7r/A7z/A73/s+u6owAAAI10Uk5TAAEBAQICAgMDBAQEBQUGBgcICQsMDg8QEhMTFRYXGBocICAhIyQlJygqLjY5OjxFRUdOT1FSV1hZXF1hZ2lqa2xtbnFyc3Z6e36AiIiKjY+SlpmanZ+goaOlpqiptMTExsrMzs/S1Nnd3d7f3+Lj5ubp6+3u7/Dx8fP19vf3+Pj5+fr6+vv7/P39/v7+jJgQHQAAAklJREFUOMu1U/lX00AQHtOmDYZ6IgjihUfxFrUq3lpUvO8DT7zvA08UESxdt9lk0YJtrUJLEyzFv9KdJLxUnz/qvH2bzc75fTsD8B/EryqKGsSTz71RftOrzqfCL4cAJOfHJ3n6AMzceOjo9kV4njzDUS/3gkEQ1j3IWVahqxVqdrZNF4oAzH21C4JumgqI5IaIkFT+ZkepCaZiyqZcag9ACIPIUN+R6WFCKBlKHdy0RRShQvN3NnJ6ljBRpEqIWjHOdMYMpnXSu/OFiwprM5Ra9zdLNoKLJmFMNwym08yNOgQoQ+2zNOn7mr8VDcsAl6y4znQRJDH4sh6mYF0haBmnnNLh0ffXz7S0ZykaGDpNP6kV3ghwaeP5VEJnJP552Bod1IQ3Cs3eqwK/nXYruRLrF4m5RuKEccSg65zkrwJMsnlezEc0cWUwzg1bKYTxWPGUYMXh9uxYl0CGJra3sxGz2X2WAMy58zPpOjqLIYjOBULlPmbNydd4aeiOCJZ4n9lmY7DfHxqilzkaeCkYT650S0Cq6p7/6GZIr2MgSuwtnoNgWYus6i9QmwADF+Mk82JeeR8psPq2mdH4hD/l2fUTnSW6SpaVaQArLgyIJAbyHP9k7vD83W6r2vYwqWFxPPEhm90NQa8Lq5ctbNxw4mnJTqGR2EDx0RqQfV4B1fsfF8ZLX7p7CfmoJXNjb4/PBrWsi4Xpktb2N2nTsizz27trBxrAq8+xwGjhyL4jxw7vjYQRk/znKCmV5XOj/G3aJEUV84ab9O9H+RcSnd8sxyL+dwAAAABJRU5ErkJggg=="/></a></li>
+          <li><a href="{{ site.facebook }}"><img alt="Facebook" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAAAV1BMVEUAAAA7V507V507V507V507V507V507V508WJ0+Wp9GYKNHYaNNZ6dfd7CXpsucqs6grdCuuti8xd7Y3uvc4u7f5O/m6vPs7/b29/r4+fv6+/38/P3///8rT3DJAAAAB3RSTlMAAAFze/P0zGvPUAAAALVJREFUOMu1kdkOwiAQRVFaRq37Urf7/99pASEM0CEx8T5MJqeHAYpSLjRgKrjaQl9kO4ItU5SrocEqNMSakNR1I3wT3IJkTVgfx0SwuWBMwQ0nbgBsCVwOgpGCZjQ7l84PSgnYPx8M3AEwAAyUARKBv4sE2jMk0DHQ1e6/1D3V0+uFFQzNx6jiZYvfVwq7MV6zKhwBWXhP37bSFnFxTUCS17ohnH/a4l+CEQTjX9PMCMa/ZiMfIHkie+NOSX0AAAAASUVORK5CYII="/></a></li>
+          <li><a href="{{ site.linkedin }}"><img alt="LinkedIn" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAAEzo7pQAAAByFBMVEUAAAC22utoq9EAe7YMf7gpi7+GhITo8vjo8/iOjI6DvduDvtuopqbX1tZxb29ytten0uZ4utl4udh4uth7u9msp6draGl+eXmxsLFHnMmCgIAAaawAba4Ab68AcK8AcLAAcbAAcbEAcrEAc7IAdLIAdbIAdbMAdrMAd7QAeLQAeLUAebQAebUAebYAerUAerYAe7YBeLUBe7YBfLYBfLcCfLYCfLcCfbcDfbcEe7YEfbcEfrcFfLcFfbYFfrgFf7gGfbcGfrgGf7gHf7gIfrgKe7YLfbcPgLkPgrkQgroRgbkSgbkTgroTg7oZhLsahLsbhLsdhbwdhrwqjcArj8Euj8Ivj8IyksM7lcRGnMhHnMhOoMpPoMpSostap85lrNFmrNFordJss9V3ttaDv9yFv9yHwd2Iwd2Jwt2PxN6Pxd+dy+Ko0eWv1umy2Oq+3ey/3ezC3u3D4O/G4u/J4+/R5/LU6PLY7PTb7fXc7PTf7/bg7/bg7/fh8Pfi8Pfj7/bj8ffn8/jr9frw+Pvx+Pv0+vz1+vz2+v34+/34/P35/P36/P36/P76/f76/v/7/f78/v79/v79/v/9///+/v7+/v/+//////+exKvcAAAAG3RSTlMAAAECAgICAgIDBAQEBl54eHl7e32GjqjF0+7mbMoOAAAB6UlEQVQ4y62SZ1cTQRiFLwz2Aro2BEVDCqjANYGwRk3WFbugomKLvWEXjQ3FjgqKyarh/l0/JODuMfni8X6Zd555zjszZwbzjDHgIxLM7jkMnnOPwRgDiLSQkyw8zmsFWEo9eOXE8KHntMBcVq4GLfSXlhpgjDHG1AHcRZIEUioXieHo9c+bCCQVUlO+XKQ8Asl86EdqkmtmtgBG6EsfAPKiDs4SCyC33tsSAMmcsiEVPUlRH9DulLxBP3BnAXc4PXQc0nHitBbgr8wxvtTWAAP+gzUuBMi0PQuiANg98SI9AyIA2C6tDwBePc0guHnbvnbjwN1fl8ugw1NmXJ6kW37wqfmBPm7/A4qn2DZdcH1giLHqYFKZD99OMpafcCOrV4F0HO504qTjMIIl6PJfrhX/kv5Aj0BaGwCAJDv37t9WQYhYJSEV+16Q7kSrCsnNDyWd7a0qkO0tTZFOMhwOh7vsjetamtvsQIeOJ5LOZzb8lKYuSYW89LQ14RdynpTNhMYlfdVrFaUvb+I9lYUL3YnefVJh6mimklDUkMtUTNNeYdD9D0J4eVnouj869v5MOvRs7NXb4y7t2Luxl6NH0gwvW7l0LUjStm07URriM3OS0XrMXYyRgWpv1deIRQDmB/6/P3W1qAF+A8eu5x34mGctAAAAAElFTkSuQmCC"/></a></li>
+          <li><a href="{{ site.googleplus }}?rel=author"><img alt="Google+" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAAgpQTFRFAAAA/wAAgAAA/4AA/4CAqlVV/1VVv0BA/0BAzDMzzGYz/2Yz1VUr20lJ30BA41U5zE0z5k0z6EZG1VVA6lVA20k331BA10M211E25FE25k1A3k432Uw540w520k33E8+4E022ks84Us83Ec53Uo84Es420074U073Uo53kw82ko620k520043Es34Us33kw530o430074Ew63Es53Ek43U0320k54Es720k63Uw320o63Uo33Uo63kw620o43Ew430w73Es63Uo53Uw43Es43Uo63Uw63Us53kw63Us43ko53Es43ks43Ew430w430s53ks53Uo53Es53ks53ks43Us53Ew43Es63ks53Us63Eo53Uw53Us53Es53ks53Us53Uo43Es43ko53kw53Uo53Us43ks53Us53ks53Us53Us53Uo53Es53Es53Uo53Us53Uo53Es43Es53ks53Ew53Eo43kw43ks53Us53Uo53Es63Us63kw53ks63Es53Es53Us53Uw53Us53Us53Us53Us53ks53Us53Us53Us63Es53Us53Us53Us53Es53Us53Us53Us53Us53Us53Us53Us53Us53ks54Ew64Uw64k06400640075E075U47504750486U886k8861A97VA97lE971E+8FE+8FI+8VI+8lI+9VM/9lM/9lRAiAtFoQAAAJZ0Uk5TAAECAgIDAwQEBQUFBgcICQoKCwwMDhATExMUFxsbHB0hIiIkJikrKy0vMDEyMzM2Nzg5Ojs8P0FGSk9TU1RWV1dYWltfYWFiZWlrbW12dn6ChouLjI+RkpOWl5eYmZmcnp+hoqWnqaurra6vsLi5vL2+v7/Ax8fIycrMzM7Q09XX2Nvc4eTm5+jr7O3u8PLy8/T19vn8r4wKvwAAAcNJREFUOMtjYBhUgJGZlY2dnZ2NjQm7PBMh/Qxs1iHx8XGxCcnOrEAeprx+UaZPzNS1c1Ld1DGlGZgZNLoKpBgYzFvnZXFi1c+cvcqOgZOBIXz2fHcGNiwGKPfNs2HgYGHQ7l0WCtLAwMaMaoLFxKWeDEAPCjetCGaA2MGIYoJq/6I8QQZuBsHalR4gK1gMlJBVMDKw5iya5gJkSU6qk2Vg5mAQXZjKwMOErEKleskEPwXdzAYNsBu5ZyagO1QmoKahuqdbEyjPKsolPSOFQYwf1Z0MrGrNy6rYGXgZDBbOnDFt+vSl1cguZWIFEunzpgQJMjAopiakTG+OzPBHtYPT1CFzwaxZaVJg3vRINJ8qRJTlJwVGdsybnyXKwMcgtjSdgY8VyQFWbe0u4gLsDIaV8+baAt3JX+3PwIoUTjqd0y0hbPmKxWGMYLORzGdjCFxdDnQmIyMjJ4Prsigm9PhkZ4he0yjHwM3GwsrH4LjcHiSPooSVwWvOrBhOMFuosFSUgRkjOQgmLlqY62SmZ+KcV6zAwIIlwYh4V0xfMLmlvsRXDIs8OElLq+kaG2lJMCD5DjVTQBksOJM/MxsIMFM/QwIAehlW9VjrgzkAAAAASUVORK5CYII="/></a></li>
+          <li><a href="https://github.com/hugocorbucci"><img alt="Github" src="http://hugocorbucci.com/images/xgithub.png.pagespeed.ic.bphwemgI8X.png"/></a></li>
+          <li><a href="{{ site.atom_url }}"><img alt="RSS Feed" src=""/></a></li>
+        </ul>
+        <a href="/">
+          <img src="https://www.gravatar.com/avatar/44ee3f196b3787b6ac3aa3ca9dd88784.png?s=150" class="circular"/>
+          <h1>{{ site.name }}</h1>
+        </a>
+        {% if not is_login %}
+        <nav>
+          <ul class='menu'>
+            <li><a href="/">Blog</a></li>
+            {% if pages %}
+              {% for page in pages %}
+            <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.title }}</a></li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
       </div>
     </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="span6 offset1">
-
+    <div class='bottom'>
+      <div class='content'>
         {% if is_home or is_tag %}
-
           {% if is_tag %}
           <div class="row">
             <h4>Showing all posts tagged #{{ tag }}:</h4>
@@ -226,62 +196,6 @@
 
         {% endif %}
         </div>
-
-        {% if not is_login %}
-          <span class="span3 offset1">
-            <div class="bio">
-              <img class="avatar" src="{{ site.avatar }}" alt="{{ site.author }}" />
-              <p>{{ site.bio }}</p>
-              <p>{{ theme.social.follow }}</p>
-              <ul class="unstyled social">
-                {% if site.twitter %}
-                <li>
-                  <a href="{{ site.twitter }}" title="Twitter" target="_blank">
-                    <i class="icon-twitter"></i> Twitter
-                  </a>
-                </li>
-                {% endif %}
-
-                {% if site.facebook %}
-                <li>
-                  <a href="{{ site.facebook }}" title="Facebook" target="_blank">
-                    <i class="icon-facebook-sign"></i> Facebook
-                  </a>
-                </li>
-                {% endif %}
-
-                {% if site.googleplus %}
-                <li>
-                  <a href="{{ site.googleplus }}?rel=author" title="Google+" target="_blank">
-                    <i class="icon-google-plus"></i> Google+
-                  </a>
-                </li>
-                {% endif %}
-
-                {% if site.linkedin %}
-                <li>
-                  <a href="{{ site.linkedin }}" title="LinkedIn" target="_blank">
-                    <i class="icon-linkedin"></i> LinkedIn
-                  </a>
-                </li>
-                {% endif %}
-                <li>
-                  <a href="{{ site.atom_url }}" title="RSS" target="_blank">
-                    <i class="icon-rss"></i> RSS
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {% if site.tags %}
-            <ul class="tags">
-              {% for tag in site.tags %}
-                <li><a href="/tag/{{ tag.name }}">#{{ tag.name }}</a></li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </span>
-        {% endif %}
       </div>
 
       <div class="row">
@@ -307,7 +221,18 @@
 
     {{ footer_meta }}
 
-    <script src="http://postach.io/static/themes/_assets/bootstrap/js/bootstrap.min.js" /></script>
+    {% if site.analytics %}
+      <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ site.analytics }}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+      </script>
+    {% endif %}
 
 </body>
 </html>
