@@ -142,9 +142,14 @@ body {
   background-color: #DEF;
 }
 
+.header nav ul.menu li.extra {
+  display: none;
+}
+
 .header nav ul.menu li a {
   display: inline;
   color: black;
+  text-decoration: none;
 }
 .header nav ul.menu a:hover {
   color: gray;
@@ -205,5 +210,8 @@ body {
   .header nav ul.menu li {
     padding: 0 10px;
     margin: 0 0 0 10px;
+  }
+  .header nav ul.menu li.extra {
+    display: inline;
   }
 }
