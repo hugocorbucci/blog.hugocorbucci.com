@@ -83,7 +83,9 @@
               <p class="muted">Posted on {{ post.created_at|format_date }}</p>
 
               <div class="post-content" data-type-cleanup="true">
-                {{ post.content }}
+                {% if post.content|striptags|wordcount > 0 %}
+                  <p>{{ post.content|striptags|truncate(500) }}</p>
+                {% endif %}
               </div>
 
             </div>
