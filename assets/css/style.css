@@ -177,6 +177,11 @@ hr {
   padding: 0 10px 0px 10px;
 }
 
+.content h1 {
+  font-size: 130%;
+  display: inline;
+}
+
 .content h2 {
   font-size: 120%;
   display: inline;
@@ -193,6 +198,11 @@ hr {
 .content ul li {
   padding-left: 2em;
   margin: 20px 0;
+}
+
+.content p.muted {
+  text-align: left;
+  font-size: 80%;
 }
 
 .content p {
