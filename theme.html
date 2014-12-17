@@ -84,7 +84,9 @@
 
               <div class="post-content" data-type-cleanup="true">
                 {% if post.content|striptags|wordcount > 200 %}
-                  <p>{{ post.content|truncate(500) }}</p>
+                  {{ post.content|truncate(500) }}
+                {% else  %}
+                  {{ post.content }}
                 {% endif %}
               </div>
 
