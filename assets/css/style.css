@@ -178,8 +178,9 @@ hr {
 }
 
 .content h1 {
-  font-size: 130%;
+  font-size: 140%;
   display: inline;
+  font-weight: bold;
 }
 
 .content h2,b {
