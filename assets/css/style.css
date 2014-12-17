@@ -176,13 +176,14 @@ hr {
   margin: 0;
   padding: 0 10px 20px 10px;
 }
-.content h1 {
-  margin: 20px 0;
-}
 
-.content h3 {
+.content h2 {
   font-size: 120%;
   display: inline;
+}
+
+.content h2>a {
+  text-decoration: none;
 }
 
 .content ul {
