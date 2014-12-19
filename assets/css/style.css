@@ -10,7 +10,7 @@ body {
   font-family: "Open Sans", sans-serif;
   min-width: 320px;
   width: 100%;
-  margin: 120px auto 0 auto;
+  margin: 100px auto 0 auto;
   transition: margin-top 0.5s ease;
   -webkit-transition: margin-top 0.5s ease;
   -moz-transition: margin-top 0.5s ease;
@@ -132,7 +132,9 @@ hr {
 }
 
 .header nav {
-  float: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .header nav ul.menu {
