@@ -70,6 +70,9 @@
         {% if is_home or is_tag %}
           {% if is_tag %}
           <div class="row">
+            <a href="/" class="post-prev">&larr; List all posts</a>
+          </div>
+          <div class="row">
             <h4>Showing all posts tagged #{{ tag }}:</h4>
             <hr />
           </div>
@@ -109,7 +112,7 @@
           {% endif %}
 
         {% elif is_post %}
-          <div class="pagination">
+          <div class="row">
             <a href="javascript:backToListOfPosts();" class="post-prev">&larr; Back to list of posts</a>
           </div>
           <div class="post">
@@ -154,7 +157,7 @@
           {% endif %}
 
         {% elif is_link %}
-          <div class="pagination">
+          <div class="row">
             <a href="javascript:backToListOfPosts();" class="post-prev">&larr; Back to list of posts</a>
           </div>
 
