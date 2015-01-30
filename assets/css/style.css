@@ -198,6 +198,10 @@ hr {
   list-style: square inside none;
 }
 
+.content ol {
+  list-style: decimal inside none;
+}
+
 .content ul li {
   padding-left: 2em;
   margin: 20px 0;
