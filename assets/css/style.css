@@ -200,6 +200,7 @@ hr {
 
 .content ol {
   list-style: decimal inside none;
+  margin: 0.5em 0;
 }
 
 .content ul li {
